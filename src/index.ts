@@ -1,21 +1,12 @@
 import { User } from './models/User';
 
-const user = new User({ name: 'myname', age: 20 });
+const user = new User({  });
 
-user.set({ name: 'newname', age: 99 });
-// interface props 를 ? 를 붙여 선택적으로 넣을 수 있게 할 수 있다.
-user.set({});
-console.log(user.get('name'));
-console.log(user.get('age'));
+user.set({ name: 'NEW NAME' });
+user.set({ age: 99 });
 
-user.on('change', () => {
-  console.log('change #1')
-});
-user.on('change', () => {
-  console.log('change #2')
-});
-user.on('save', () => {
-  console.log('Save triggered!')
-});
+user.events.on('change', () => {
+  console.log('changed!')
+})
 
-user.trigger('change');
+user.events.trigger('change')
