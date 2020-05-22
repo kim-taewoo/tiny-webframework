@@ -28,17 +28,16 @@ export class Model<T extends HasId> {
   ) {}
 
   // 오직 reference 만을 반환한다.
-  get on() {
-    return this.events.on;
-  }
+  // 근데 그렇기 땜에 `get` 이란 키워드 없이
+  // 그냥 attribute 처럼 써놔도 똑같이 동작한다.
+  // get on() {
+  //   return this.events.on;
+  // }
+  on = this.events.on;
 
-  get trigger() {
-    return this.events.trigger;
-  }
+  trigger = this.events.trigger;
 
-  get get() {
-    return this.attributes.get;
-  }
+  get = this.attributes.get;
 
   set(update: T): void {
     this.attributes.set(update);
